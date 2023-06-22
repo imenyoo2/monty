@@ -228,7 +228,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last = *stack;
 	stack_t *first = *stack;
-	stack_t *buffer;
 	(void) line_number;
 
 	if (last == NULL || last->prev == NULL)
@@ -236,15 +235,11 @@ void rotl(stack_t **stack, unsigned int line_number)
 	while (first->prev)
 		first = first->prev;
 
-	buffer = last->next;
-	last->next = first->next;
-	first->next = buffer;
-	buffer = last->prev;
-	last->prev = first->prev;
-	first->prev = buffer;
-	first->prev->next = first;
-	last->next->prev = last;
-	*stack = first;
+	*stack = last->prev;
+	last->prev->next = NULL;
+	first->prev = last;
+	last->prev = NULL;
+	last->next = first;
 }
 
 void nop(stack_t **stack, unsigned int line_number)
