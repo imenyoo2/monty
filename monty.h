@@ -65,6 +65,8 @@ instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
 extern int IS_VALID;
 extern int EXIT_STATUS;
+extern int EXIT_STATUS;
+extern int IS_NO_OPERAND;
 
 char *get_opcode(char *line);
 void set_operand(char *str);

@@ -87,6 +87,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 void pint(stack_t **stack, unsigned int line_number)
 {
 
+	if (!IS_NO_OPERAND)
+	{
+		usage(line_number, PINT_USAGE);
+		return;
+	}
 	if (*stack == NULL)
 	{
 		print_error(line_number, PINT_STACK_EMPTY);
