@@ -20,7 +20,11 @@ int main(int argc, char **argv)
 	stack_t *stack_pointer = NULL; /* initializing the stack */
 
 	if (argc != 2)
+	{
 		usage(line_number, MAIN_USAGE);
+		exit(EXIT_FAILURE);
+	}
+	
 	source = fopen(argv[1], "r");
 	if (source == NULL)
 		cant_open_file(argv[1]);

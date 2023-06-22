@@ -11,7 +11,10 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 
 	if (!IS_VALID)
+	{
 		usage(line_number, PUSH_USAGE);
+		return;
+	}
 	new = malloc(sizeof(stack_t));
 	check_malloc(new);
 	new->n = NODE_DATA;
