@@ -111,6 +111,23 @@ void add(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int result;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+	{
+		print_error(line_number, SUB_STACK_SHORT);
+		return;
+	}
+
+	result = (*stack)->n;
+	result -= (*stack)->prev->n;
+	pop(stack, line_number);
+	(*stack)->n = result;
+	EXIT_STATUS = 0;
+}
+
 
 void nop(stack_t **stack, unsigned int line_number)
 {
