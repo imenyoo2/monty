@@ -25,6 +25,7 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		new->next = NULL;
 		new->prev = *stack;
+		(*stack)->next = new;
 		*stack = new;
 	}
 	EXIT_STATUS = 0;
@@ -223,6 +224,28 @@ void mod(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *last = *stack;
+	stack_t *first = *stack;
+	stack_t *buffer;
+	(void) line_number;
+
+	if (last == NULL || last->prev == NULL)
+		return;
+	while (first->prev)
+		first = first->prev;
+
+	buffer = last->next;
+	last->next = first->next;
+	first->next = buffer;
+	buffer = last->prev;
+	last->prev = first->prev;
+	first->prev = buffer;
+	first->prev->next = first;
+	last->next->prev = last;
+	*stack = first;
+}
 
 void nop(stack_t **stack, unsigned int line_number)
 {
