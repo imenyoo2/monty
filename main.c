@@ -1,14 +1,14 @@
 #define _GNU_SOURCE
 #include "monty.h"
 
+int EXIT_STATUS = 0;
+
 /**
  * main - Entry point
  * @argc: number of arguments
  * @argv: arguments array
  * Return: 0 if success, otherwise exit
  */
-int EXIT_STATUS = 0;
-
 int main(int argc, char **argv)
 {
 	FILE *source = NULL;

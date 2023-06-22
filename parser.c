@@ -3,6 +3,7 @@
 
 /**
  * parse - parse line
+ * @line_number: current line number
  * @line: line to be parsed
  * Return: instruction_t
  */
@@ -36,6 +37,11 @@ instruction_t *parse(int line_number, char *line)
 	return (result);
 }
 
+/**
+ * get_opcode - return the opcode of line (first word)
+ * @line: pointer to current line
+ * Return: pointer to the first char of opcode, or NULL
+ */
 char *get_opcode(char *line)
 {
 	int i = 0;

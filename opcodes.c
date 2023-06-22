@@ -2,7 +2,8 @@
 
 /**
  * push - pushes an item to the top of stack
- * @n: integer to be pushed
+ * @stack: head of stack
+ * @line_number: current line number
  * Return: void
  */
 void push(stack_t **stack, unsigned int line_number)
@@ -33,6 +34,8 @@ void push(stack_t **stack, unsigned int line_number)
 
 /**
  * pall - print all values on the stack starting from the top
+ * @stack: head of the stack
+ * @line_number: current line number
  * Return: void
  */
 void pall(stack_t **stack, unsigned int line_number)
@@ -49,6 +52,12 @@ void pall(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * pstr - print all stack as ascii
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
@@ -66,6 +75,12 @@ void pstr(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * pint - print all stack data
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void pint(stack_t **stack, unsigned int line_number)
 {
 
@@ -77,6 +92,12 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+/**
+ * pchar - print the top of stack as int
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void pchar(stack_t **stack, unsigned int line_number)
 {
 
@@ -93,6 +114,12 @@ void pchar(stack_t **stack, unsigned int line_number)
 	printf("%c\n", (*stack)->n);
 }
 
+/**
+ * pop - delete the top of the stack
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *buffer = *stack;
@@ -108,6 +135,12 @@ void pop(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * swap - swap the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *buffer;
@@ -128,6 +161,12 @@ void swap(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * add - adds the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void add(stack_t **stack, unsigned int line_number)
 {
 	int result;
@@ -145,6 +184,12 @@ void add(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * sub - substitute the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void sub(stack_t **stack, unsigned int line_number)
 {
 	int result;
@@ -162,6 +207,12 @@ void sub(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * div_ - devide the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void div_(stack_t **stack, unsigned int line_number)
 {
 	int result;
@@ -185,6 +236,12 @@ void div_(stack_t **stack, unsigned int line_number)
 }
 
 
+/**
+ * mul - multiply the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void mul(stack_t **stack, unsigned int line_number)
 {
 	int result;
@@ -202,6 +259,12 @@ void mul(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * mod - modulate the top two items
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void mod(stack_t **stack, unsigned int line_number)
 {
 	int result;
@@ -224,6 +287,12 @@ void mod(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+/**
+ * rotl - move the top item to bottom
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last = *stack;
@@ -242,6 +311,12 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last->next = first;
 }
 
+/**
+ * rotr - move the bottom item to top
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *last = *stack;
@@ -261,6 +336,12 @@ void rotr(stack_t **stack, unsigned int line_number)
 	*stack = first;
 }
 
+/**
+ * nop - does nothing
+ * @stack: head of the stack
+ * @line_number: current line number
+ * Return: void
+ */
 void nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;

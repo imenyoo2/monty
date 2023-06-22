@@ -37,6 +37,12 @@ void free_stack(stack_t *stack)
 }
 
 /* TODO: move these files to errors.c */
+/**
+ * unknown_inst_error - print unknown instruction error
+ * @opcode: the uncorrect opcode
+ * @line_number: current line number
+ * Return: void
+ */
 void unknown_inst_error(char *opcode, int line_number)
 {
 	int i = 0;
@@ -50,6 +56,12 @@ void unknown_inst_error(char *opcode, int line_number)
 
 
 /* TODO: maybe this shouldn't be stderr */
+/**
+ * usage - print usage
+ * @line_number: current line number
+ * @id: specify which usage to print
+ * Return: void
+ */
 void usage(int line_number, enum usage_enum id)
 {
 	if (id == MAIN_USAGE)
@@ -61,6 +73,12 @@ void usage(int line_number, enum usage_enum id)
 	EXIT_STATUS = EXIT_FAILURE;
 }
 
+/**
+ * print_error - print specific error
+ * @line_number: current line number
+ * @error: specify which error to print
+ * Return: void
+ */
 void print_error(int line_number, enum error_enum error)
 {
 	if (error == PINT_STACK_EMPTY)
@@ -88,6 +106,11 @@ void print_error(int line_number, enum error_enum error)
 	EXIT_STATUS = EXIT_FAILURE;
 }
 
+/**
+ * cant_open_file - print can't open file error
+ * @file: file that can't be opened
+ * Return: void
+ */
 void cant_open_file(char *file)
 {
 	fprintf(stderr, "Error: Can't open file %s\n", file);
