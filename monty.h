@@ -23,6 +23,7 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+void free_stack(stack_t *stack);
 
 
 /**

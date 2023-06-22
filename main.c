@@ -9,14 +9,13 @@
  */
 int main(int argc, char **argv)
 {
-	FILE *source;
+	FILE *source = NULL;
 	char *line = NULL;
-	ssize_t read;
-	size_t len;
+	ssize_t read = 0;
+	size_t len = 0;
 	int line_number = 0;
-	instruction_t *instruction;
+	instruction_t *instruction = NULL;
 	stack_t *stack_pointer = NULL; /* initializing the stack */
-	(void) stack_pointer;
 
 	if (argc != 2)
 	{
@@ -35,11 +34,14 @@ int main(int argc, char **argv)
 		line_number++;
 		instruction = parse(line);
     instruction->f(&stack_pointer, line_number);
+    free(instruction->opcode);
+    free(instruction);
 	}
 	fclose(source);
 	if (line)
 	{
 		free(line);
+    free_stack(stack_pointer);
 	}
 	return (0);
 }

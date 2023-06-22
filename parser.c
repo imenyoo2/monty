@@ -12,7 +12,7 @@ instruction_t *parse(char *line)
 	char *opcodes[] = {"push", "pall"};
 	func_t functions[] = {&push, &pall};
 	int i;
-	char *buffer;
+	char *buffer = NULL;
 
 	char *opcode = get_opcode(line);
 	for (i = 0; i < 2; i++)
@@ -22,7 +22,7 @@ instruction_t *parse(char *line)
 			result = malloc(sizeof(instruction_t));
 			check_malloc(result);
 			result->f = functions[i];
-			buffer = malloc(strlen(opcodes[i]));
+			buffer = malloc(strlen(opcodes[i]) + 1);
 			check_malloc(buffer);
 			strcpy(buffer, opcodes[i]);
 			result->opcode = buffer;
@@ -81,7 +81,7 @@ void set_operand(char *str)
 	int i = 0;
 	char *buffer;
 
-	while (str[i] != ' ')
+	while (str[i] != ' ' && str[i])
 		i++;
 	/* preparing for int conversion */
 	operand = strtol(&str[i], &buffer, 10);

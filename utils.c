@@ -14,3 +14,24 @@ void check_malloc(void *ptr)
 		exit(EXIT_FAILURE);
 	}
 }
+
+
+/**
+ * free_stack - frees the stack
+ * @stack: the head of stack
+ * Return: void
+ */
+void free_stack(stack_t *stack)
+{
+  stack_t *buffer;
+
+  if (stack)
+    buffer = stack->prev;
+  free(stack);
+  while (buffer)
+  {
+    stack = buffer;
+    buffer = stack->prev;
+    free(stack);
+  }
+}
