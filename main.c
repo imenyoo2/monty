@@ -1,5 +1,5 @@
 #define _GNU_SOURCE
-#include "main.h"
+#include "monty.h"
 
 /**
  * main - Entry point
