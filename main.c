@@ -7,6 +7,8 @@
  * @argv: arguments array
  * Return: 0 if success, otherwise exit
  */
+int EXIT_STATUS = 0;
+
 int main(int argc, char **argv)
 {
 	FILE *source = NULL;
@@ -32,12 +34,16 @@ int main(int argc, char **argv)
 		instruction->f(&stack_pointer, line_number);
 		free(instruction->opcode);
 		free(instruction);
+		if (EXIT_STATUS)
+			break;
 	}
 	fclose(source);
 	if (line)
 	{
 		free(line);
 		free_stack(stack_pointer);
+		if (EXIT_STATUS)
+			exit(EXIT_STATUS);
 	}
 	return (0);
 }

@@ -27,6 +27,7 @@ void push(stack_t **stack, unsigned int line_number)
 		new->prev = *stack;
 		*stack = new;
 	}
+	EXIT_STATUS = 0;
 }
 
 /**
@@ -43,6 +44,7 @@ void pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->prev;
 	}
+	EXIT_STATUS = 0;
 }
 
 void pint(stack_t **stack, unsigned int line_number)
@@ -50,8 +52,8 @@ void pint(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
+		print_error(line_number, PINT_STACK_EMPTY);
+		return;
 	}
 	printf("%d\n", (*stack)->n);
 }
@@ -63,22 +65,23 @@ void pop(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-		exit(EXIT_FAILURE);
+		print_error(line_number, POP_STACK_EMPTY);
+		return;
 	}
 
 	*stack = buffer->prev;
 	free(buffer);
+	EXIT_STATUS = 0;
 }
 
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *buffer;
 
-	if (*stack == NULL && (*stack)->prev == NULL)
+	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
+		print_error(line_number, SWAP_STACK_SHORT);
+		return;
 	}
 
 	buffer = (*stack)->prev;
@@ -87,4 +90,6 @@ void swap(stack_t **stack, unsigned int line_number)
 	(*stack)->prev = buffer->prev;
 	buffer->prev = *stack;
 	*stack = buffer;
+
+	EXIT_STATUS = 0;
 }

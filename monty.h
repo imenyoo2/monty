@@ -54,6 +54,7 @@ void swap(stack_t **stack, unsigned int line_number);
 instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
 extern int IS_VALID;
+extern int EXIT_STATUS;
 
 char *get_opcode(char *line);
 void set_operand(char *str);
@@ -65,10 +66,13 @@ int _strcmp(char *src, char *dst);
 /* error functions */
 void check_malloc(void *ptr);
 void unknown_inst_error(char *opcode, int line_number);
-void usage(int line_number, int id);
-#define MAIN_USAGE 0
-#define PUSH_USAGE 1
-#define PINT_USAGE 2
+
+enum usage_enum {MAIN_USAGE, PUSH_USAGE, PINT_USAGE};
+void usage(int line_number, enum usage_enum id);
+
+enum error_enum {PINT_STACK_EMPTY, POP_STACK_EMPTY, SWAP_STACK_SHORT};
+void print_error(int line_number, enum error_enum error);
+
 void cant_open_file(char *file);
 
 #endif
