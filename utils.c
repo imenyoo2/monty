@@ -65,6 +65,8 @@ void print_error(int line_number, enum error_enum error)
 {
 	if (error == PINT_STACK_EMPTY)
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+	else if (error == PCHAR_STACK_EMPTY)
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 	else if (error == POP_STACK_EMPTY)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 	else if (error == SWAP_STACK_SHORT)
