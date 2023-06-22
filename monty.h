@@ -50,6 +50,7 @@ void pall(stack_t **stack, unsigned int line_number);
 
 instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
+extern int IS_VALID;
 
 char *get_opcode(char *line);
 void set_operand(char *str);
@@ -61,7 +62,9 @@ int _strcmp(char *src, char *dst);
 /* error functions */
 void check_malloc(void *ptr);
 void unknown_inst_error(char *opcode, int line_number);
-void usage();
+void usage(int line_number, int id);
+#define PUSH_USAGE 1
+#define MAIN_USAGE 0
 void cant_open_file(char *file);
 
 #endif

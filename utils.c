@@ -23,24 +23,24 @@ void check_malloc(void *ptr)
  */
 void free_stack(stack_t *stack)
 {
-  stack_t *buffer;
+	stack_t *buffer;
 
-  if (stack)
-    buffer = stack->prev;
-  free(stack);
-  while (buffer)
-  {
-    stack = buffer;
-    buffer = stack->prev;
-    free(stack);
-  }
+	if (stack)
+		buffer = stack->prev;
+	free(stack);
+	while (buffer)
+	{
+		stack = buffer;
+		buffer = stack->prev;
+		free(stack);
+	}
 }
 
 /* TODO: move these files to errors.c */
 void unknown_inst_error(char *opcode, int line_number)
 {
 	int i = 0;
-	
+
 	while (opcode[i] != ' ' && opcode[i])
 		i++;
 	opcode[i] = '\0';
@@ -50,9 +50,12 @@ void unknown_inst_error(char *opcode, int line_number)
 
 
 /* TODO: maybe this shouldn't be stderr */
-void usage()
+void usage(int line_number, int id)
 {
-	fprintf(stderr, "USAGE: monty file\n");
+	if (id == 0)
+		fprintf(stderr, "USAGE: monty file\n");
+	else if (id == 1)
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
 

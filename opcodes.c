@@ -10,12 +10,10 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	(void) line_number;
 
+	if (!IS_VALID)
+		usage(line_number, PUSH_USAGE);
 	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+	check_malloc(new);
 	new->n = NODE_DATA;
 	/* pushing the first element to the stack */
 	if (*stack == NULL)

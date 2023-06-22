@@ -30,8 +30,8 @@ instruction_t *parse(int line_number, char *line)
 	}
 	if (result)
 		set_operand(opcode);
-  else
-    unknown_inst_error(opcode, line_number);
+	else
+		unknown_inst_error(opcode, line_number);
 	return (result);
 }
 
@@ -69,6 +69,7 @@ int _strcmp(char *src, char *dst)
 
 
 int NODE_DATA = 0;
+int IS_VALID = 1;
 
 /**
  * set_operand - obtains the operand from str and sets the global variable
@@ -81,11 +82,19 @@ void set_operand(char *str)
 	int i = 0;
 	char *buffer;
 
+	if (!str || *str == '\n')
+		IS_VALID = 0;
+	else
+		IS_VALID = 1;
 	while (str[i] != ' ' && str[i])
 		i++;
 	/* preparing for int conversion */
 	operand = strtol(&str[i], &buffer, 10);
-	/* TODO: check buffer */
+	/* check buffer */
+	for (i = 0; buffer[i]; i++)
+	{
+		if (buffer[i] != ' ' && buffer[i] != '\n')
+			IS_VALID = 0;
+	}
 	NODE_DATA = operand;
-	(void) NODE_DATA;
 }

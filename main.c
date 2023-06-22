@@ -18,24 +18,24 @@ int main(int argc, char **argv)
 	stack_t *stack_pointer = NULL; /* initializing the stack */
 
 	if (argc != 2)
-    usage();
+		usage(line_number, MAIN_USAGE);
 	source = fopen(argv[1], "r");
 	if (source == NULL)
-    cant_open_file(argv[1]);
+		cant_open_file(argv[1]);
 
 	while ((read = getline(&line, &len, source)) != -1)
 	{
 		line_number++;
 		instruction = parse(line_number, line);
-    instruction->f(&stack_pointer, line_number);
-    free(instruction->opcode);
-    free(instruction);
+		instruction->f(&stack_pointer, line_number);
+		free(instruction->opcode);
+		free(instruction);
 	}
 	fclose(source);
 	if (line)
 	{
 		free(line);
-    free_stack(stack_pointer);
+		free_stack(stack_pointer);
 	}
 	return (0);
 }
