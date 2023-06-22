@@ -47,6 +47,7 @@ typedef void (*func_t)(stack_t **stack, unsigned int line_number);
 /* TODO: more then 5 functions */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);

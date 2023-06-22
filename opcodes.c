@@ -47,6 +47,24 @@ void pall(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+	(void) line_number; /* TODO: change this to use when error */
+
+	while(tmp)
+	{
+		if (tmp->n < 0x40 || tmp->n > 0x7f)
+			break;
+		putchar(tmp->n);
+		tmp = tmp->prev;
+	}
+	putchar('\n');
+	EXIT_STATUS = 0;
+}
+
+
 void pint(stack_t **stack, unsigned int line_number)
 {
 

@@ -9,15 +9,15 @@
 instruction_t *parse(int line_number, char *line)
 {
 	instruction_t *result = NULL;
-	char *opcodes[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", "sub", "div", "mul", "mod", "#", "pchar"};
-	func_t functions[] = {&push, &pall, &pint, &pop, &swap, &add, &nop, &sub, &div_, &mul, &mod, &nop, &pchar};
+	char *opcodes[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", "sub", "div", "mul", "mod", "#", "pchar", "pstr"};
+	func_t functions[] = {&push, &pall, &pint, &pop, &swap, &add, &nop, &sub, &div_, &mul, &mod, &nop, &pchar, &pstr};
 	int i;
 	char *buffer = NULL;
 
 	char *opcode = get_opcode(line);
 	if (!opcode)
 		return (NULL);
-	for (i = 0; i < 13; i++)
+	for (i = 0; i < 14; i++)
 	{
 		if (_strcmp(opcode, opcodes[i]))
 		{
