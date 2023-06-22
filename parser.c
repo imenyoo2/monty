@@ -17,7 +17,7 @@ instruction_t *parse(int line_number, char *line)
 	char *opcode = get_opcode(line);
 	if (!opcode)
 		return (NULL);
-	for (i = 0; i < 6; i++)
+	for (i = 0; i < 7; i++)
 	{
 		if (_strcmp(opcode, opcodes[i]))
 		{
