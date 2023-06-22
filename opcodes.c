@@ -168,6 +168,28 @@ void mul(stack_t **stack, unsigned int line_number)
 	EXIT_STATUS = 0;
 }
 
+void mod(stack_t **stack, unsigned int line_number)
+{
+	int result;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+	{
+		print_error(line_number, MOD_STACK_SHORT);
+		return;
+	}
+
+	result = (*stack)->n;
+	if (result == 0)
+	{
+		print_error(line_number, DIV_BY_ZERO);
+		return;
+	}
+	result = (*stack)->prev->n % result;
+	pop(stack, line_number);
+	(*stack)->n = result;
+	EXIT_STATUS = 0;
+}
+
 
 void nop(stack_t **stack, unsigned int line_number)
 {
