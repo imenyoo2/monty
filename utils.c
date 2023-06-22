@@ -6,13 +6,15 @@
  * @ptr: result of malloc call
  * Return: void
  */
-void check_malloc(void *ptr)
+int check_malloc(void *ptr)
 {
 	if (ptr == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		EXIT_STATUS = EXIT_FAILURE;
+		return (1);
 	}
+	return (0);
 }
 
 
@@ -51,7 +53,7 @@ void unknown_inst_error(char *opcode, int line_number)
 		i++;
 	opcode[i] = '\0';
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-	exit(EXIT_FAILURE);
+	EXIT_STATUS = EXIT_FAILURE;
 }
 
 

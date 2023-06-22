@@ -23,16 +23,21 @@ instruction_t *parse(int line_number, char *line)
 		if (_strcmp(opcode, opcodes[i]))
 		{
 			result = malloc(sizeof(instruction_t));
-			check_malloc(result);
+			if (check_malloc(result))
+				return (NULL);
 			result->f = functions[i];
 			buffer = malloc(strlen(opcodes[i]) + 1);
-			check_malloc(buffer);
+			if (check_malloc(buffer))
+				return (NULL);
 			strcpy(buffer, opcodes[i]);
 			result->opcode = buffer;
 		}
 	}
 	if (!result)
+	{
 		unknown_inst_error(opcode, line_number);
+		return (NULL);
+	}
 	set_operand(opcode);
 	return (result);
 }

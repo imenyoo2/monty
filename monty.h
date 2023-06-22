@@ -74,7 +74,7 @@ int _strcmp(char *src, char *dst);
 /* utils */
 
 /* error functions */
-void check_malloc(void *ptr);
+int check_malloc(void *ptr);
 void unknown_inst_error(char *opcode, int line_number);
 
 enum usage_enum {MAIN_USAGE, PUSH_USAGE, PINT_USAGE};
