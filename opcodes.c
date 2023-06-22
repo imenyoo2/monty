@@ -122,7 +122,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 
 	result = (*stack)->n;
-	result -= (*stack)->prev->n;
+	result = (*stack)->prev->n - result;
 	pop(stack, line_number);
 	(*stack)->n = result;
 	EXIT_STATUS = 0;
