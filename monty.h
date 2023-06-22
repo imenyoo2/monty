@@ -75,7 +75,7 @@ void unknown_inst_error(char *opcode, int line_number);
 enum usage_enum {MAIN_USAGE, PUSH_USAGE, PINT_USAGE};
 void usage(int line_number, enum usage_enum id);
 
-enum error_enum {PINT_STACK_EMPTY, POP_STACK_EMPTY, SWAP_STACK_SHORT, ADD_STACK_SHORT, SUB_STACK_SHORT, DIV_STACK_SHORT, DIV_BY_ZERO};
+enum error_enum {PINT_STACK_EMPTY, POP_STACK_EMPTY, SWAP_STACK_SHORT, ADD_STACK_SHORT, SUB_STACK_SHORT, DIV_STACK_SHORT, DIV_BY_ZERO, MUL_STACK_SHORT};
 void print_error(int line_number, enum error_enum error);
 
 void cant_open_file(char *file);

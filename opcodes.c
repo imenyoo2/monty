@@ -157,7 +157,7 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		print_error(line_number, ADD_STACK_SHORT);
+		print_error(line_number, MUL_STACK_SHORT);
 		return;
 	}
 
