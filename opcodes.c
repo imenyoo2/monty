@@ -108,4 +108,14 @@ void add(stack_t **stack, unsigned int line_number)
 	result += (*stack)->prev->n;
 	pop(stack, line_number);
 	(*stack)->n = result;
+	EXIT_STATUS = 0;
+}
+
+
+void nop(stack_t **stack, unsigned int line_number)
+{
+	(void) stack;
+	(void) line_number;
+
+	EXIT_STATUS = 0;
 }
