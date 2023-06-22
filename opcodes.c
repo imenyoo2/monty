@@ -55,3 +55,18 @@ void pint(stack_t **stack, unsigned int line_number)
 	}
 	printf("%d\n", (*stack)->n);
 }
+
+
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *buffer = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	*stack = buffer->prev;
+	free(buffer);
+}
