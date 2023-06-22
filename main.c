@@ -27,6 +27,8 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		instruction = parse(line_number, line);
+		if (!instruction)
+			continue;
 		instruction->f(&stack_pointer, line_number);
 		free(instruction->opcode);
 		free(instruction);

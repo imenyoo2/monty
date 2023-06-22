@@ -15,6 +15,8 @@ instruction_t *parse(int line_number, char *line)
 	char *buffer = NULL;
 
 	char *opcode = get_opcode(line);
+	if (!opcode)
+		return (NULL);
 	for (i = 0; i < 2; i++)
 	{
 		if (_strcmp(opcode, opcodes[i]))
@@ -28,10 +30,9 @@ instruction_t *parse(int line_number, char *line)
 			result->opcode = buffer;
 		}
 	}
-	if (result)
-		set_operand(opcode);
-	else
+	if (!result)
 		unknown_inst_error(opcode, line_number);
+	set_operand(opcode);
 	return (result);
 }
 
