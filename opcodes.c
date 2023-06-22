@@ -242,6 +242,25 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last->next = first;
 }
 
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *last = *stack;
+	stack_t *first = *stack;
+	(void) line_number;
+
+	if (last == NULL || last->prev == NULL)
+		return;
+	while (first->prev)
+		first = first->prev;
+
+	first->next->prev = NULL;
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;
+
+	*stack = first;
+}
+
 void nop(stack_t **stack, unsigned int line_number)
 {
 	(void) stack;
