@@ -6,7 +6,7 @@
  * @line: line to be parsed
  * Return: instruction_t
  */
-instruction_t *parse(char *line)
+instruction_t *parse(int line_number, char *line)
 {
 	instruction_t *result = NULL;
 	char *opcodes[] = {"push", "pall"};
@@ -29,9 +29,9 @@ instruction_t *parse(char *line)
 		}
 	}
 	if (result)
-	{
 		set_operand(opcode);
-	}
+  else
+    unknown_inst_error(opcode, line_number);
 	return (result);
 }
 

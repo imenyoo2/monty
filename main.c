@@ -18,21 +18,15 @@ int main(int argc, char **argv)
 	stack_t *stack_pointer = NULL; /* initializing the stack */
 
 	if (argc != 2)
-	{
-		puts("USAGE: monty file");
-		exit(EXIT_FAILURE);
-	}
+    usage();
 	source = fopen(argv[1], "r");
 	if (source == NULL)
-	{
-		printf("Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+    cant_open_file(argv[1]);
 
 	while ((read = getline(&line, &len, source)) != -1)
 	{
 		line_number++;
-		instruction = parse(line);
+		instruction = parse(line_number, line);
     instruction->f(&stack_pointer, line_number);
     free(instruction->opcode);
     free(instruction);
@@ -45,6 +39,3 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
-/* TODO: L<line_number>: unknown instruction <opcode> + EXIT_FAILURE */
-/* TODO: Error: malloc failed + EXIT_FAILURE */

@@ -10,7 +10,7 @@ void check_malloc(void *ptr)
 {
 	if (ptr == NULL)
 	{
-		puts("USAGE: monty file");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -34,4 +34,30 @@ void free_stack(stack_t *stack)
     buffer = stack->prev;
     free(stack);
   }
+}
+
+/* TODO: move these files to errors.c */
+void unknown_inst_error(char *opcode, int line_number)
+{
+	int i = 0;
+	
+	while (opcode[i] != ' ' && opcode[i])
+		i++;
+	opcode[i] = '\0';
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+	exit(EXIT_FAILURE);
+}
+
+
+/* TODO: maybe this shouldn't be stderr */
+void usage()
+{
+	fprintf(stderr, "USAGE: monty file\n");
+	exit(EXIT_FAILURE);
+}
+
+void cant_open_file(char *file)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", file);
+	exit(EXIT_FAILURE);
 }

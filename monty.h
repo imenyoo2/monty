@@ -48,7 +48,7 @@ void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 
 
-instruction_t *parse(char *line);
+instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
 
 char *get_opcode(char *line);
@@ -58,6 +58,10 @@ int _strcmp(char *src, char *dst);
 
 /* utils */
 
+/* error functions */
 void check_malloc(void *ptr);
+void unknown_inst_error(char *opcode, int line_number);
+void usage();
+void cant_open_file(char *file);
 
 #endif
