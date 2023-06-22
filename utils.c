@@ -73,6 +73,10 @@ void print_error(int line_number, enum error_enum error)
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 	else if (error == SUB_STACK_SHORT)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+	else if (error == DIV_STACK_SHORT)
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+	else if (error == DIV_BY_ZERO)
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 	EXIT_STATUS = EXIT_FAILURE;
 }
 
