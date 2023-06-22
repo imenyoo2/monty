@@ -58,6 +58,21 @@ void pint(stack_t **stack, unsigned int line_number)
 	printf("%d\n", (*stack)->n);
 }
 
+void pchar(stack_t **stack, unsigned int line_number)
+{
+
+	if (*stack == NULL)
+	{
+		print_error(line_number, PCHAR_STACK_EMPTY);
+		return;
+	}
+	if ((*stack)->n < -128 || (*stack)->n > 127)
+	{
+		print_error(line_number, PCHAR_OUT_RANGE);
+		return;
+	}
+	printf("%c\n", (*stack)->n);
+}
 
 void pop(stack_t **stack, unsigned int line_number)
 {

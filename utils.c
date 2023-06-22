@@ -81,6 +81,8 @@ void print_error(int line_number, enum error_enum error)
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 	else if (error == DIV_BY_ZERO)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
+	else if (error == PCHAR_OUT_RANGE)
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 	EXIT_STATUS = EXIT_FAILURE;
 }
 

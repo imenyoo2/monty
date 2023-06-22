@@ -9,8 +9,8 @@
 instruction_t *parse(int line_number, char *line)
 {
 	instruction_t *result = NULL;
-	char *opcodes[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", "sub", "div", "mul", "mod", "#"};
-	func_t functions[] = {&push, &pall, &pint, &pop, &swap, &add, &nop, &sub, &div_, &mul, &mod, &nop};
+	char *opcodes[] = {"push", "pall", "pint", "pop", "swap", "add", "nop", "sub", "div", "mul", "mod", "#", "pchar"};
+	func_t functions[] = {&push, &pall, &pint, &pop, &swap, &add, &nop, &sub, &div_, &mul, &mod, &nop, &pchar};
 	int i;
 	char *buffer = NULL;
 
