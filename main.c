@@ -2,7 +2,6 @@
 #include "monty.h"
 
 int EXIT_STATUS = 0;
-int IS_NO_OPERAND = 0;
 
 /**
  * main - Entry point

@@ -100,10 +100,6 @@ void set_operand(char *str)
 		IS_VALID = 1;
 	while (str[i] != ' ' && str[i])
 		i++;
-	if (!str[i])
-		IS_NO_OPERAND = 1;
-	else
-		IS_NO_OPERAND = 0;
 	/* preparing for int conversion */
 	operand = strtol(&str[i], &buffer, 10);
 	/* check buffer */
