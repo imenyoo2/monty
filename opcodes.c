@@ -66,7 +66,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		print_error(line_number, PCHAR_STACK_EMPTY);
 		return;
 	}
-	if (!((*stack)->n >= 0x80 && (*stack)->n <= 0x7ff))
+	if ((*stack)->n < 0x40 || (*stack)->n > 0x7f)
 	{
 		print_error(line_number, PCHAR_OUT_RANGE);
 		return;
