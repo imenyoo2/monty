@@ -50,6 +50,7 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 
 instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
@@ -70,7 +71,7 @@ void unknown_inst_error(char *opcode, int line_number);
 enum usage_enum {MAIN_USAGE, PUSH_USAGE, PINT_USAGE};
 void usage(int line_number, enum usage_enum id);
 
-enum error_enum {PINT_STACK_EMPTY, POP_STACK_EMPTY, SWAP_STACK_SHORT};
+enum error_enum {PINT_STACK_EMPTY, POP_STACK_EMPTY, SWAP_STACK_SHORT, ADD_STACK_SHORT};
 void print_error(int line_number, enum error_enum error);
 
 void cant_open_file(char *file);

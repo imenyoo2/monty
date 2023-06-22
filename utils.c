@@ -69,6 +69,8 @@ void print_error(int line_number, enum error_enum error)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 	else if (error == SWAP_STACK_SHORT)
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	else if (error == ADD_STACK_SHORT)
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 	EXIT_STATUS = EXIT_FAILURE;
 }
 
