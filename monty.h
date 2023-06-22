@@ -46,7 +46,7 @@ typedef void (*func_t)(stack_t **stack, unsigned int line_number);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-
+void pint(stack_t **stack, unsigned int line_number);
 
 instruction_t *parse(int line_number, char *line);
 extern int NODE_DATA;
@@ -63,8 +63,9 @@ int _strcmp(char *src, char *dst);
 void check_malloc(void *ptr);
 void unknown_inst_error(char *opcode, int line_number);
 void usage(int line_number, int id);
-#define PUSH_USAGE 1
 #define MAIN_USAGE 0
+#define PUSH_USAGE 1
+#define PINT_USAGE 2
 void cant_open_file(char *file);
 
 #endif

@@ -8,7 +8,6 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	(void) line_number;
 
 	if (!IS_VALID)
 		usage(line_number, PUSH_USAGE);
@@ -37,11 +36,22 @@ void push(stack_t **stack, unsigned int line_number)
 void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	(void) line_number;
+	(void) line_number; /* TODO: change this to use when error */
 
 	while(tmp)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->prev;
 	}
+}
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }

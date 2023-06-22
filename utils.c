@@ -56,6 +56,8 @@ void usage(int line_number, int id)
 		fprintf(stderr, "USAGE: monty file\n");
 	else if (id == 1)
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+	else if (id == 3)
+		fprintf(stderr, "L%d: usage: pint\n", line_number);
 	exit(EXIT_FAILURE);
 }
 
